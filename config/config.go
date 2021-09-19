@@ -8,7 +8,8 @@ import (
 var DB *gorm.DB
 
 func InitDB() {
-	connectionString := "root:root@tcp(0.0.0.0:3306)/dbname?charset=utf8mb4&parseTime=True&loc=Local"
+	//connectionString := "root:@tcp(0.0.0.0:3306)/dbname?charset=utf8mb4&parseTime=True&loc=Local"
+	connectionString := "https://virtserver.swaggerhub.com/sepulsa/RentABook-API/1.0.0/"
 
 	var err error
 	DB, err = gorm.Open(mysql.Open(connectionString), &gorm.Config{})
