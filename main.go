@@ -1,17 +1,13 @@
 package main
 
 import (
-	"net/http"
-
-	"github.com/labstack/echo"
+	"crud-test/config"
+	"crud-test/routes"
 )
 
 func main() {
-	e := echo.New()
-	e.GET("/", HelloController)
+	config.InitDB()
+	config.InitMigrate()
+	e := routes.NewRoutes()
 	e.Start(":8000")
-}
-
-func HelloController(c echo.Context) error{
-	return c.String(http.StatusOK, "Hello World")
 }
