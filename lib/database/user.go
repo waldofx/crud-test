@@ -40,7 +40,7 @@ func UpdateUser(id string, userData models.User) (*models.User, error){
 }
 
 func DeleteUser(id string, user models.User) (string, error){
-	if err := config.DB.First(&user, id).Delete(&user).Error; err != nil{
+	if err := config.DB.Unscoped().Delete(&user).Error; err != nil{
 		return "", err
 	}
 	return "deleted", nil
