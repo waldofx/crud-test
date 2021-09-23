@@ -15,8 +15,7 @@ func GetUserController(echoContext echo.Context) error {
 			"message": "not found",
 		})
 	}
-
-	return echoContext.JSON(http.StatusOK, *user)
+	return echoContext.JSON(http.StatusOK, newResponse(*user))
 }
 
 func GetAllUserController(echoContext echo.Context) error {
@@ -33,7 +32,7 @@ func GetAllUserController(echoContext echo.Context) error {
 func AddUserController(echoContext echo.Context) error {
 	var userReq UserRequest
 	echoContext.Bind(&userReq)
-
+	//fmt.Printf("%v", userReq)
 	result, err := database.PostUser(userReq.toModel())
 	if err != nil{
 		return echoContext.JSON(http.StatusBadRequest, map[string]interface{}{
