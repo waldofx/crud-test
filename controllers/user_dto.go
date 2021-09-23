@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"crud-test/models"
+	"time"
 )
 
 type UserRequest struct {
@@ -23,6 +24,9 @@ func (req *UserRequest) toModel() models.User{
 }
 
 type UserResponse struct{
+	CreatedAt time.Time `json:"created_at"`
+	UpdatedAt time.Time `json:"updated_at"`
+	DeletedAt time.Time `json:"deleted_at"`
 	ID        int    `json:"id"`
 	Name      string `json:"name"`
 	Age       int    `json:"age"`
@@ -32,6 +36,9 @@ type UserResponse struct{
 
 func newResponse(modelUsers models.User) UserResponse{
 	return UserResponse{
+		CreatedAt: modelUsers.CreatedAt, 
+		UpdatedAt: modelUsers.UpdatedAt,
+		DeletedAt: modelUsers.DeletedAt.Time,
 		ID: modelUsers.ID,
 		Name: modelUsers.Name,
 		Age: modelUsers.Age,

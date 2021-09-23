@@ -5,10 +5,10 @@ import (
 )
 
 type User struct {
-	gorm.Model
-	ID		 int		`json:"id"`
-	Name     string 	`json:"name"`
-	Age      int    	`json:"age"`
-	Sex      string 	`json:"sex"`
-	ClientID int    	`json:"client_id"`
+	gorm.Model 			//`json:"-"`
+	ID		 int		//`json:"id"`
+	Name     string 	//`json:"name"`
+	Age      int    	//`json:"age"`
+	Sex      string 	//`json:"sex"`
+	ClientID int    	//`json:"client_id"`
 }
